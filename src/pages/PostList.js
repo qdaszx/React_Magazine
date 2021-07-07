@@ -1,9 +1,10 @@
 import React from "react";
+import Post from "../components/Post";
 
 const PostList = (props) => {
   return (
     <React.Fragment>
-      포스트리스트
+      <Post />
     </React.Fragment>
   )
 }
