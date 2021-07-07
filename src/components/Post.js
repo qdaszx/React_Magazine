@@ -1,14 +1,24 @@
 import React from "react";
 import Grid from "../elements/Grid";
+import Image from "../elements/Image";
+import Text from "../elements/Text";
 
 const Post = (props) => {
   return (
     <React.Fragment>
-      <Grid padding="16px">
-        <div>user_profile/ user_name / insert_dt / is_me</div>
-        <div>image</div>
-        <div>contents</div>
-        <div>comment_cnt</div>
+      <Grid>
+        <Grid is_flex padding="16px">
+          <Image shape="circle"></Image>
+        </Grid>
+        <Grid>
+          <Image shape="rectangle"></Image>
+        </Grid>
+        <Grid padding="16px">
+          <div>contents</div>
+        </Grid>
+        <Grid padding="16px">
+          <div>comment_cnt</div>
+        </Grid>
       </Grid>
     </React.Fragment>
   );
