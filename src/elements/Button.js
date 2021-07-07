@@ -15,6 +15,7 @@ const TagButton = styled.button`
   background-color: #868b8e;
   color: #ffffff;
   padding: 12px 0px;
+
   box-sizing: border-box;
   border: none;
 `;
