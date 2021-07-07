@@ -6,7 +6,7 @@ import Text from "../elements/Text";
 const Post = (props) => {
   return (
     <React.Fragment>
-      <Grid>
+      <Grid bg="#EEEDE7">
         <Grid is_flex padding="16px">
           <Image shape="circle"></Image>
           <Text bold>{props.user_info.user_name}</Text>
