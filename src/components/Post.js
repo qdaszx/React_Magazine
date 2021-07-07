@@ -16,7 +16,7 @@ const Post = (props) => {
           <Image shape="rectangle"></Image>
         </Grid>
         <Grid padding="16px">
-          <Text bold>오늘은 날씨가 선선하니 걷기 딱 좋은 날씨네</Text>
+          <Text bold>라윗 웨잇 베이베~!!!!!!</Text>
         </Grid>
         <Grid padding="16px">
           <Text>댓글 10개</Text>

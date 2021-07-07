@@ -23,8 +23,8 @@ const Image = (props) => {
 
 Image.defaultProps = {
   shape: "circle",
-  src: "https://images.unsplash.com/photo-1536514215126-f2993bcf38f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1951&q=80",
-  src2: "https://images.unsplash.com/photo-1625592729058-8338198122c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+  src: "https://images.unsplash.com/photo-1605822335686-ce034adfda7d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1790&q=80",
+  src2: "https://images.unsplash.com/photo-1610554843876-9be9b896b2d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
   size: 36,
 };
 
