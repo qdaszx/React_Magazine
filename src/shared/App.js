@@ -1,10 +1,15 @@
 import React from "react";
 
+import {BrowserRouter, Route} from "react-router-dom"
+import PostList from "../pages/PostList";
+
 function App() {
   return (
-    <div className="App">
-      매거진 만들기!
-    </div>
+    <React.Fragment>
+      <BrowserRouter>
+        <Route path="/" exact component={PostList} />
+      </BrowserRouter>
+    </React.Fragment>
   );
 }
 
