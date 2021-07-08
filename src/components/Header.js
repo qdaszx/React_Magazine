@@ -17,7 +17,10 @@ const Header = (props) => {
       <React.Fragment>
         <Grid is_flex padding="4px 16px" bg="#EEEDE7">
           <Grid>
-            <Image shape="logo" size="70px" />
+            <Text size="40px" bold margin="0px">
+              헬스타그램
+            </Text>
+            {/* <Image shape="logo" size="70px" /> */}
           </Grid>
           <Grid is_flex>
             <Button text="내정보" />
@@ -38,7 +41,10 @@ const Header = (props) => {
     <React.Fragment>
       <Grid is_flex padding="4px 16px" bg="#EEEDE7">
         <Grid>
-          <Image shape="logo" size="70px" />
+          <Text size="40px" bold margin="0px">
+            헬스타그램
+          </Text>
+          {/* <Image shape="logo" size="70px" /> */}
         </Grid>
         <Grid is_flex>
           <Button text="로그인" />

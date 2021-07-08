@@ -4,12 +4,12 @@ import Text from "./Text";
 import Grid from "./Grid";
 
 const Input = (props) => {
-  const { label, placeholder, _onChange } = props;
+  const { label, placeholder, _onChange, type } = props;
   return (
     <React.Fragment>
       <Grid>
         <Text margin="0px">{label}</Text>
-        <TagInput placeholder={placeholder} onChange={_onChange} />
+        <TagInput type={type} placeholder={placeholder} onChange={_onChange} />
       </Grid>
     </React.Fragment>
   );
@@ -26,6 +26,7 @@ Input.defaultProps = {
   label: "텍스트",
   placeholder: "텍스트를 입력하세요",
   _onChange: () => {},
+  type: "text",
 };
 
 export default Input;

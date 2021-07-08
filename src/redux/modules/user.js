@@ -2,6 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 import { auth } from "../../shared/firebase";
+import firebase from "firebase/app";
 
 // actions
 const LOG_OUT = "LOG_OUT";
@@ -20,11 +21,43 @@ const initialState = {
 };
 
 // middleware actions
-const loginAction = (user) => {
+const loginFB = (id, pwd) => {
   return function (dispatch, getState, { history }) {
-    console.log(history);
-    dispatch(setUser(user));
-    history.push("/");
+    //   로그인 정보를 저장할 위치를 세션으로 바꿔줍니다.
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then((res) => {
+      // 이메일과 비밀번호로 로그인합니다.
+      auth
+        .signInWithEmailAndPassword(id, pwd)
+        .then((user) => {
+          // 성공한 경우, 유저 정보가 어떻게 오는 지 주석을 풀고 확인해봐요!
+          console.log(user);
+
+          //   리덕스에도 유저 정보를 저장해줍니다.
+          dispatch(
+            setUser({
+              user_name: user.user.displayName,
+              id: id,
+              user_profile: "",
+              uid: user.user.uid,
+            })
+          );
+
+          // 미들웨어에서 페이지 이동하기!
+          // 이걸 위해서 configureStore.js에서 뭘 해줬는 지 다시 한 번 확인해보고 오세요!
+          history.push("/");
+        })
+        .catch((error) => {
+          // 로그인 실패하면 alert으로 알려줄거예요!
+          // 여기에 팝업을 띄워주거나, 왜 실패했는 지 알려주는 등 다른 작업도 해볼 수 있겠죠! :)
+          // (시간이 남으면 해보세요!)
+          window.alert("로그인 실패!");
+
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          console.log(errorCode, errorMessage);
+        });
+    });
   };
 };
 
@@ -86,8 +119,8 @@ export default handleActions(
 const actionCreators = {
   getUser,
   logOut,
-  loginAction,
   signupFB,
+  loginFB,
 };
 
 export { actionCreators };
