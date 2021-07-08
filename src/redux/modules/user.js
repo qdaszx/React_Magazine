@@ -74,7 +74,12 @@ const signupFB = (id, pwd, user_name) => {
           })
           .then(() => {
             dispatch(
-              setUser({ user_name: user_name, id: id, user_profile: "" })
+              setUser({
+                user_name: user_name,
+                id: id,
+                user_profile: "",
+                uid: user.user.uid,
+              })
             );
             history.push("/");
           })
@@ -92,6 +97,25 @@ const signupFB = (id, pwd, user_name) => {
         console.log(errorCode, errorMessage);
         // ..
       });
+  };
+};
+
+const loginCheckFB = () => {
+  return function (dispatch, getState, { history }) {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(
+          setUser({
+            user_name: user.displayName,
+            user_profile: "",
+            id: user.email,
+            uid: user.uid,
+          })
+        );
+      } else {
+        dispatch(logOut());
+      }
+    });
   };
 };
 
@@ -121,6 +145,7 @@ const actionCreators = {
   logOut,
   signupFB,
   loginFB,
+  loginCheckFB,
 };
 
 export { actionCreators };

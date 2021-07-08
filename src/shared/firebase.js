@@ -11,6 +11,8 @@ const firebaseConfig = {
   measurementId: "G-KLT2KR403R",
 };
 
+export const apiKey = firebaseConfig.apiKey;
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 

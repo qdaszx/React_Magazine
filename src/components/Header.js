@@ -8,11 +8,15 @@ import { getCookie, deleteCookie } from "../shared/Cookie";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
 
+import { apiKey } from "../shared/firebase";
+import { history } from "../redux/configureStore";
+
 const Header = (props) => {
   const dispatch = useDispatch();
   const is_login = useSelector((state) => state.user.is_login);
-
-  if (is_login) {
+  const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
+  const is_session = sessionStorage.getItem(_session_key);
+  if (is_login && is_session) {
     return (
       <React.Fragment>
         <Grid is_flex padding="4px 16px" bg="#EEEDE7">
@@ -29,6 +33,7 @@ const Header = (props) => {
               text="로그아웃"
               _onClick={() => {
                 dispatch(userActions.logOut({}));
+                history.push("/");
               }}
             />
           </Grid>
@@ -47,8 +52,18 @@ const Header = (props) => {
           {/* <Image shape="logo" size="70px" /> */}
         </Grid>
         <Grid is_flex>
-          <Button text="로그인" />
-          <Button text="회원가입" />
+          <Button
+            text="로그인"
+            _onClick={() => {
+              history.push("/login");
+            }}
+          />
+          <Button
+            text="회원가입"
+            _onClick={() => {
+              history.push("/signup");
+            }}
+          />
         </Grid>
       </Grid>
     </React.Fragment>
