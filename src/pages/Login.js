@@ -3,8 +3,26 @@ import Text from "../elements/Text";
 import Grid from "../elements/Grid";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
+import { getCookie, setCookie, deleteCookie } from "../shared/Cookie";
 
 const Login = (props) => {
+
+  const Login = (props) => {
+    const [id, setId] = React.useState('');
+    const [pwd, setPwd] = React.useState('');
+
+    const changeId = (e) => {
+        setId(e.target.value);
+    }
+
+    const changePwd = (e) => {
+        setPwd(e.target.value);
+    }
+
+    const login = () => {
+        setCookie("user_id", id, 3);
+        setCookie("user_pwd", pwd, 3);
+    }
   return (
     <Grid bg="#EEEDE7" padding="16px">
       <Text size="30px" bold>
