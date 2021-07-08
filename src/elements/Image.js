@@ -29,7 +29,7 @@ Image.defaultProps = {
   shape: "circle",
   src: "https://images.unsplash.com/photo-1605822335686-ce034adfda7d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1790&q=80",
   src2: "https://images.unsplash.com/photo-1610554843876-9be9b896b2d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-  src3: "https://o.remove.bg/downloads/094fb516-e293-4f8a-9e40-6b9a1aa63d60/6850637486bc6ccd70c5aa83c2e3d6a5-removebg-preview.png",
+  src3: "https://images.unsplash.com/photo-1625684188247-c49bb3d509a1?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60",
   size: 36,
   size3: 70,
 };
