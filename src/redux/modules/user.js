@@ -61,6 +61,19 @@ const loginFB = (id, pwd) => {
   };
 };
 
+// 로그아웃
+const logoutFB = () => {
+  return function (dispatch, getState, { history }) {
+    //   파이어베이스에서 로그아웃하고,
+    auth.signOut().then(() => {
+      // 성공하면 리덕스에서도 유저 정보를 삭제하고, is_login 상태를 false로 바꿔줍니다.
+      dispatch(logOut());
+      //   그리고 메인 페이지로 이동해요!
+      history.replace("/");
+    });
+  };
+};
+
 const signupFB = (id, pwd, user_name) => {
   return function (dispatch, getState, { history }) {
     auth
@@ -142,7 +155,7 @@ export default handleActions(
 // action creator export
 const actionCreators = {
   getUser,
-  logOut,
+  logoutFB,
   signupFB,
   loginFB,
   loginCheckFB,

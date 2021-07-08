@@ -69,13 +69,7 @@ const SignUp = (props) => {
         />
       </Grid>
       <Grid margin="20px 0px">
-        <Button
-          text="회원가입하기"
-          _onClick={() => {
-            console.log("회원가입 완료");
-            signup();
-          }}
-        />
+        <Button _onClick={signup}>회원가입하기</Button>
       </Grid>
     </Grid>
   );

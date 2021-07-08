@@ -46,11 +46,12 @@ const Login = (props) => {
       </Grid>
       <Grid margin="20px 0px">
         <Button
-          text="로그인하기"
           _onClick={() => {
             login();
           }}
-        />
+        >
+          로그인하기
+        </Button>
       </Grid>
     </Grid>
   );

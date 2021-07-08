@@ -9,6 +9,8 @@ import PostList from "../pages/PostList";
 import SignUp from "../pages/SignUp";
 import Header from "../components/Header";
 import Grid from "../elements/Grid";
+import Button from "../elements/Button";
+import Permit from "./Permit";
 
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -34,6 +36,16 @@ function App() {
           <Route path="/signup" exact component={SignUp} />
         </ConnectedRouter>
       </Grid>
+      <Permit>
+        <Button
+          is_float
+          _onClick={() => {
+            history.push("/write");
+          }}
+        >
+          +
+        </Button>
+      </Permit>
     </React.Fragment>
   );
 }
