@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Post from "../components/Post";
 import { actionCreators as postActions } from "../redux/modules/post";
 import InfinityScroll from "../shared/InfinityScroll";
-import { Grid } from "../elements";
+import Grid from "../elements/Grid";
 
 // 게시글 목록
 // 무한 스크롤을 사용해서 게시글 목록을 나눠가져와요! :)
