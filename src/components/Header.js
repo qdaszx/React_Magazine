@@ -7,6 +7,7 @@ import { getCookie, deleteCookie } from "../shared/Cookie";
 
 const Header = (props) => {
   const [is_login, setIsLogin] = React.useState(false);
+
   React.useEffect(() => {
     let cookie = getCookie("user_id");
     console.log(cookie);
