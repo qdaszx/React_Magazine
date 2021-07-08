@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Post from "../components/Post";
 import { actionCreators as postActions } from "../redux/modules/post";
 import InfinityScroll from "../shared/InfinityScroll";
-import Grid from "../elements/Grid";
+import { Grid } from "../elements";
 
 // 게시글 목록
-// 무한 스크롤을 사용해서 게시글 목록을 나눠가져와요! :)
+// 무한 스크롤을 사용해서 게시글 목록을 나눠가져와요! :) 
 const PostList = (props) => {
   const dispatch = useDispatch();
   const post_list = useSelector((state) => state.post.list);
@@ -47,7 +47,7 @@ const PostList = (props) => {
                     history.push(`/post/${p.id}`);
                   }}
                 >
-                  {/* 유저정보가 로그인한 사용자 정보와 같으면 is_me 속성을 전달해요. */}
+                    {/* 유저정보가 로그인한 사용자 정보와 같으면 is_me 속성을 전달해요. */}
                   <Post key={p.id} {...p} is_me />
                 </Grid>
               );

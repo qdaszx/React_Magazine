@@ -1,31 +1,41 @@
 import React from "react";
-import Grid from "../elements/Grid";
-import Text from "../elements/Text";
-import Image from "../elements/Image";
-import Button from "../elements/Button";
-import { getCookie, deleteCookie } from "../shared/Cookie";
+import { Grid, Text, Button, Image } from "../elements";
 
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
 
-import { apiKey } from "../shared/firebase";
 import { history } from "../redux/configureStore";
-
+import { apiKey } from "../shared/firebase";
+import pic from "../shared/6850637486bc6ccd70c5aa83c2e3d6a5-removebg-preview.png"
 const Header = (props) => {
   const dispatch = useDispatch();
+
+  //   리덕스에서 로그인 중인지 상태값 가져오기
   const is_login = useSelector((state) => state.user.is_login);
+
+  //   세션에 기록된 로그인 정보 가져오기
+  // 어떻게 생겼는 지는 파이어베이스에서 결정해요! (우리가 결정할 수 있는 건 저장 위치뿐..!)
   const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
-  const is_session = sessionStorage.getItem(_session_key);
+
+  //   세션이(로그인 정보겠죠!) 있나없나 확인해요!
+  const is_session = sessionStorage.getItem(_session_key) ? true : false;
+  //  아래 주석을 풀고 세션이 있나 없나 확인해볼까요? :)
+  //   console.log(is_session);
+
+  // 리덕스에서 is_login이 true로 저장되어 있고, 세션도 있으면 로그인 중인 것으로 판단해요!
+  // 로그인 한 뒤 헤더를 보여줄거예요.
   if (is_login && is_session) {
     return (
       <React.Fragment>
-        <Grid is_flex padding="4px 16px" bg="#EEEDE7">
-          <Grid>
-            <Text size="30px" bold margin="0px">
+        <Grid is_flex padding="4px 16px" bg="#F2F1F0">
+          <Grid >
+            <Image src={pic} shape="logo"/>
+            <Text margin="0px" size="24px" bold shape="rectangle">
               헬스타그램
             </Text>
-            {/* <Image shape="logo" size="70px" /> */}
+
           </Grid>
+
           <Grid is_flex>
             <Button
               _onClick={() => {
@@ -40,15 +50,17 @@ const Header = (props) => {
     );
   }
 
+  //   로그인 중이 아니라면 로그인 전 헤더를 보여줍니다.
   return (
     <React.Fragment>
-      <Grid is_flex padding="4px 16px" bg="#EEEDE7">
+      <Grid is_flex padding="4px 16px" bg="#F2F1F0">
         <Grid>
-          <Text size="40px" bold margin="0px">
-            헬스타그램
-          </Text>
-          {/* <Image shape="logo" size="70px" /> */}
+          <Image src={pic} />
+            <Text margin="0px" size="24px" bold>
+              헬스타그램
+            </Text>
         </Grid>
+
         <Grid is_flex>
           <Button
             _onClick={() => {

@@ -9,6 +9,7 @@ const InfinityScroll = (props) => {
   // 스크롤 이벤트에 throttle을 붙여줍니다.
   //   이 부분 자세한 내용이 궁금하다면 심화 강의 3주차 throttle, 4주차 무한스크롤 만들기를 참고해주세요!
   const _handleScroll = _.throttle(() => {
+
     // 만약 로딩 중이라면? (이미 게시글을 불러오고 있었다면?)
     // 더 불러오지 않게 해요!
     if (loading) {

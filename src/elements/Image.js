@@ -1,58 +1,78 @@
-import React from "react";
 import styled from "styled-components";
+import React from "react";
 
+
+
+// 이미지 컴포넌트
+/**
+ *
+ * @param {*} props
+ * - shape 이미지를 동그랗게 보여줄 지, 네모로 보여줄 지 모양을 결정합니다.
+ * - src 이미지 경로
+ * - size 이미지 사이즈
+ * @returns
+ */
 const Image = (props) => {
-  const { shape, src, size, src2 } = props;
+  const { shape, src, size, display } = props;
+
+  const styles = {
+    src: src,
+    size: size,
+    display: display,
+  };
+
   if (shape === "circle") {
-    return <ImageCircle {...props}></ImageCircle>;
+    return <ImageCircle {...styles}></ImageCircle>;
   }
 
   if (shape === "rectangle") {
     return (
-      <Outter>
-        <Inner {...props}></Inner>
-      </Outter>
+      <AspectOutter>
+        <AspectInner {...styles}></AspectInner>
+      </AspectOutter>
     );
   }
 
   if (shape === "logo") {
-    return <Logo {...props}></Logo>;
+    return (
+      <React.Fragment>
+        <ImageDefault {...styles}></ImageDefault>
+      </React.Fragment>
+    );
   }
   return (
     <React.Fragment>
-      <></>
+      <ImageDefault {...styles}></ImageDefault>
     </React.Fragment>
-  );
+  )
 };
+
 
 Image.defaultProps = {
-  shape: "circle",
-  src: "https://images.unsplash.com/photo-1605822335686-ce034adfda7d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1790&q=80",
-  src2: "https://images.unsplash.com/photo-1610554843876-9be9b896b2d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-  src3: "https://images.unsplash.com/photo-1625684188247-c49bb3d509a1?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60",
+  shape: "cicle",
+  src: "https://images.unsplash.com/photo-1591089627083-d9d049d833f9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
   size: 36,
-  size3: 70,
 };
 
-const Logo = styled.div`
-  --size: ${(props) => props.size3}px;
+const ImageDefault = styled.div`
+  --size: ${(props) => props.size}px;
   width: var(--size);
   height: var(--size);
-  background-image: url("${(props) => props.src3}");
+  background-image: url("${(props) => props.src}");
   background-size: cover;
+  display: inline-block;
 `;
 
-// 반응형이 되는 네모를 만들기
-const Outter = styled.div`
+const AspectOutter = styled.div`
   width: 100%;
   min-width: 250px;
 `;
 
-const Inner = styled.div`
+const AspectInner = styled.div`
   position: relative;
   padding-top: 75%;
   overflow: hidden;
-  background-image: url("${(props) => props.src2}");
+  background-image: url("${(props) => props.src}");
   background-size: cover;
 `;
 
@@ -61,6 +81,7 @@ const ImageCircle = styled.div`
   width: var(--size);
   height: var(--size);
   border-radius: var(--size);
+
   background-image: url("${(props) => props.src}");
   background-size: cover;
   margin: 4px;

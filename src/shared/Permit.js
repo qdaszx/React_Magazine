@@ -12,7 +12,7 @@ const Permit = React.memo((props) => {
 
   const is_session = sessionStorage.getItem(_session_key) ? true : false;
 
-  //   세션과 리덕스 내 로그인 여부 값을 사용해 로그인했는 지 여부를 판단합니다!
+//   세션과 리덕스 내 로그인 여부 값을 사용해 로그인했는 지 여부를 판단합니다!
   if (is_session && is_login) {
     return <React.Fragment>{props.children}</React.Fragment>;
   }
