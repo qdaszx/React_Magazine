@@ -17,6 +17,15 @@ const initialState = {
   is_login: false,
 };
 
+// middleware actions
+const loginAction = (user) => {
+  return function (dispatch, getState, { history }) {
+    console.log(history);
+    dispatch(logIn(user));
+    history.push("/");
+  };
+};
+
 export default handleActions(
   {
     [LOG_IN]: (state, action) =>
@@ -41,6 +50,7 @@ const actionCreators = {
   logIn,
   getUser,
   logOut,
+  loginAction,
 };
 
 export { actionCreators };

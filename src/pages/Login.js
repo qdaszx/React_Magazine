@@ -4,22 +4,24 @@ import Grid from "../elements/Grid";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
 import { getCookie, setCookie, deleteCookie } from "../shared/Cookie";
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Login = (props) => {
-  const [id, setId] = React.useState("");
-  const [pwd, setPwd] = React.useState("");
+  const dispatch = useDispatch();
+  // const [id, setId] = React.useState("");
+  // const [pwd, setPwd] = React.useState("");
 
-  const changeId = (e) => {
-    setId(e.target.value);
-  };
+  // const changeId = (e) => {
+  //   setId(e.target.value);
+  // };
 
-  const changePwd = (e) => {
-    setPwd(e.target.value);
-  };
+  // const changePwd = (e) => {
+  //   setPwd(e.target.value);
+  // };
 
   const login = () => {
-    setCookie("user_id", id, 3);
-    setCookie("user_pwd", pwd, 3);
+    dispatch(userActions.loginAction({ user_name: "perl" }));
   };
   return (
     <Grid bg="#EEEDE7" padding="16px">
@@ -31,14 +33,14 @@ const Login = (props) => {
         <Input
           label="아이디"
           placeholder="아이디를 입력해주세요"
-          onChang={changeId}
+          // onChang={changeId}
         />
       </Grid>
       <Grid padding="16px 0px">
         <Input
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요"
-          onChang={changePwd}
+          // onChang={changePwd}
         />
       </Grid>
       <Grid margin="20px 0px">

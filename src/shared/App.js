@@ -1,6 +1,9 @@
 import React from "react";
 
-import {BrowserRouter, Route} from "react-router-dom"
+import { BrowserRouter, Route } from "react-router-dom"
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "../redux/configureStore";
+
 import Login from "../pages/Login";
 import PostList from "../pages/PostList";
 import SignUp from "../pages/SignUp";
@@ -11,12 +14,12 @@ function App() {
   return (
     <React.Fragment>
       <Grid>
-        <Header/>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
+          <Header/>
           <Route path="/" exact component={PostList} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={SignUp} />
-        </BrowserRouter>
+        </ConnectedRouter>
       </Grid>
     </React.Fragment>
   );
